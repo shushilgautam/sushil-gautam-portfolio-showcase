@@ -1,18 +1,18 @@
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full border border-blue-100">
+              <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full border border-blue-100">
                 <span className="text-sm font-medium text-blue-700">About Me</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Passionate about crafting 
-                <span className="block text-blue-600">digital experiences</span>
+                Flutter Developer & 
+                <span className="block text-blue-600">CSIT Student</span>
               </h2>
               <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
                 <p>
