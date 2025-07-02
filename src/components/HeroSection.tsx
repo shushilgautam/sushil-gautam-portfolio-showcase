@@ -1,5 +1,5 @@
 
-import { Github, LinkedIn } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -58,7 +58,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-gray-300"
               >
-                <LinkedIn size={24} className="text-blue-600" />
+                <Linkedin size={24} className="text-blue-600" />
               </a>
             </div>
           </div>

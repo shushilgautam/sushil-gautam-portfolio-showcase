@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, Github, LinkedIn } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin } from 'lucide-react';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -95,7 +95,7 @@ const ContactSection = () => {
                   rel="noopener noreferrer"
                   className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 hover:border-gray-300 group"
                 >
-                  <LinkedIn size={24} className="text-blue-600 group-hover:text-blue-700 transition-colors" />
+                  <Linkedin size={24} className="text-blue-600 group-hover:text-blue-700 transition-colors" />
                 </a>
               </div>
             </div>
