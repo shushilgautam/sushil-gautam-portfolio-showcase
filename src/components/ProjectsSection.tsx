@@ -32,14 +32,14 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-green-50 rounded-full border border-green-100 mb-6">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center px-4 py-2 bg-green-50 rounded-full border border-green-100 mb-6 hover:bg-green-100 transition-colors duration-300">
             <span className="text-sm font-medium text-green-700">Portfolio</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 hover:text-green-600 transition-colors duration-500">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed hover:text-gray-800 transition-colors duration-300">
             Here are some of my recent projects that showcase my skills in mobile app development
           </p>
         </div>
@@ -48,15 +48,16 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200 transform hover:-translate-y-3"
+              className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200 transform hover:-translate-y-3 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Project Header */}
-              <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/5"></div>
+              <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-300"></div>
                 <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                  <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                  <h3 className="text-2xl font-bold text-white group-hover:scale-105 transition-transform duration-300">{project.title}</h3>
                   {project.featured && (
-                    <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full font-medium">
+                    <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full font-medium group-hover:bg-white/30 transition-colors duration-300">
                       Featured
                     </span>
                   )}
@@ -66,7 +67,7 @@ const ProjectsSection = () => {
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex gap-4 text-white/90 text-sm">
                     {Object.entries(project.stats).map(([key, value]) => (
-                      <div key={key} className="flex flex-col">
+                      <div key={key} className="flex flex-col group-hover:scale-105 transition-transform duration-300">
                         <span className="font-bold text-lg">{value}</span>
                         <span className="text-xs capitalize">{key}</span>
                       </div>
@@ -77,7 +78,7 @@ const ProjectsSection = () => {
 
               {/* Project Content */}
               <div className="p-8 space-y-6">
-                <p className="text-gray-600 leading-relaxed text-base">
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-800 transition-colors duration-300">
                   {project.description}
                 </p>
 
@@ -85,7 +86,7 @@ const ProjectsSection = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200 transition-colors font-medium"
+                      className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200 hover:scale-105 transition-all duration-300 font-medium"
                     >
                       {tech}
                     </span>
@@ -93,12 +94,12 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="pt-4 border-t border-gray-100 flex gap-4">
-                  <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors group font-medium">
-                    <Github size={18} />
+                  <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 hover:scale-105 transition-all duration-300 group font-medium">
+                    <Github size={18} className="group-hover:rotate-12 transition-transform duration-300" />
                     <span>Code</span>
                   </button>
-                  <button className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors group font-medium">
-                    <ExternalLink size={18} />
+                  <button className="flex items-center space-x-2 text-green-600 hover:text-green-700 hover:scale-105 transition-all duration-300 group font-medium">
+                    <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     <span>Live Demo</span>
                   </button>
                 </div>
@@ -107,14 +108,14 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div className="text-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <a 
             href="https://github.com/shushilgautam" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-3 px-8 py-4 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1"
+            className="inline-flex items-center space-x-3 px-8 py-4 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transform group"
           >
-            <Github size={20} />
+            <Github size={20} className="group-hover:rotate-12 transition-transform duration-300" />
             <span>View All Projects on GitHub</span>
           </a>
         </div>

@@ -66,24 +66,24 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-orange-50 rounded-full border border-orange-100 mb-6">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center px-4 py-2 bg-orange-50 rounded-full border border-orange-100 mb-6 hover:bg-orange-100 transition-colors duration-300">
             <span className="text-sm font-medium text-orange-700">Get In Touch</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 hover:text-orange-600 transition-colors duration-500">
             Let's Work Together
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed hover:text-gray-800 transition-colors duration-300">
             Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-16">
           {/* Contact Information */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-gray-900">Contact Information</h3>
-              <p className="text-gray-600 leading-relaxed text-lg">
+              <p className="text-gray-600 leading-relaxed text-lg hover:text-gray-800 transition-colors duration-300">
                 I'm always excited to work on new projects and collaborate with amazing people. 
                 Whether you have a question, want to start a project, or just want to say hello, 
                 feel free to reach out!
@@ -97,16 +97,17 @@ const ContactSection = () => {
                   <a
                     key={index}
                     href={contact.href}
-                    className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group"
+                    className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-md"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className={`p-3 rounded-lg ${contact.color}`}>
+                    <div className={`p-3 rounded-lg ${contact.color} group-hover:scale-110 transition-transform duration-300`}>
                       <IconComponent size={20} />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                      <p className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                         {contact.label}
                       </p>
-                      <p className="text-gray-600">{contact.value}</p>
+                      <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{contact.value}</p>
                     </div>
                   </a>
                 );
@@ -124,7 +125,7 @@ const ContactSection = () => {
                       href={social.href} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className={`p-4 bg-gray-50 rounded-xl transition-all duration-300 border border-gray-200 ${social.color} transform hover:-translate-y-1 hover:shadow-lg`}
+                      className={`p-4 bg-gray-50 rounded-xl transition-all duration-300 border border-gray-200 ${social.color} transform hover:-translate-y-1 hover:shadow-lg hover:scale-105`}
                     >
                       <IconComponent size={24} />
                     </a>
@@ -135,12 +136,12 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-gray-50 rounded-3xl p-8 lg:p-10">
+          <div className="lg:col-span-3 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-gray-50 rounded-3xl p-8 lg:p-10 hover:shadow-lg transition-shadow duration-500">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-3">
+                  <div className="group">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       Your Name
                     </label>
                     <input
@@ -150,13 +151,13 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg"
+                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg hover:border-gray-300 hover:shadow-md"
                       placeholder="Enter your name"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">
+                  <div className="group">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       Email Address
                     </label>
                     <input
@@ -166,14 +167,14 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg"
+                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg hover:border-gray-300 hover:shadow-md"
                       placeholder="Enter your email"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3">
+                <div className="group">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                     Message
                   </label>
                   <textarea
@@ -183,16 +184,16 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-lg"
+                    className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-lg hover:border-gray-300 hover:shadow-md"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg group"
                 >
-                  <Send size={20} />
+                  <Send size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
                   <span>Send Message</span>
                 </button>
               </form>
