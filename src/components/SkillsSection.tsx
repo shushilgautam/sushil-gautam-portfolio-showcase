@@ -1,69 +1,84 @@
 
 const SkillsSection = () => {
   const skills = [
-    { name: 'Flutter (Dart)', level: 95, color: 'bg-blue-500' },
-    { name: 'Native Android (Java, Kotlin)', level: 85, color: 'bg-green-500' },
-    { name: 'Python', level: 80, color: 'bg-yellow-500' },
-    { name: 'Django', level: 75, color: 'bg-green-600' },
-    { name: 'MySQL', level: 80, color: 'bg-blue-600' },
-    { name: 'Firebase', level: 90, color: 'bg-orange-500' },
-    { name: 'REST API Integration', level: 85, color: 'bg-purple-500' },
-    { name: 'Git & GitHub', level: 85, color: 'bg-gray-600' },
+    { name: 'Flutter (Dart)', level: 95, color: 'from-blue-500 to-blue-600', icon: '📱' },
+    { name: 'Native Android (Java, Kotlin)', level: 85, color: 'from-green-500 to-green-600', icon: '🤖' },
+    { name: 'Python', level: 80, color: 'from-yellow-500 to-yellow-600', icon: '🐍' },
+    { name: 'Django', level: 75, color: 'from-emerald-500 to-emerald-600', icon: '🌐' },
+    { name: 'MySQL', level: 80, color: 'from-blue-600 to-indigo-600', icon: '🗄️' },
+    { name: 'Firebase', level: 90, color: 'from-orange-500 to-red-500', icon: '🔥' },
+    { name: 'REST API Integration', level: 85, color: 'from-purple-500 to-purple-600', icon: '🔗' },
+    { name: 'Git & GitHub', level: 85, color: 'from-gray-600 to-gray-700', icon: '📂' },
   ];
 
   const tools = [
-    'Android Studio',
-    'VS Code',
-    'PyCharm',
-    'Postman',
-    'Firebase Console',
-    'Cloud Firestore',
-    'Realtime Database',
-    'GitHub',
+    { name: 'Android Studio', category: 'IDE' },
+    { name: 'VS Code', category: 'Editor' },
+    { name: 'PyCharm', category: 'IDE' },
+    { name: 'Postman', category: 'API Testing' },
+    { name: 'Firebase Console', category: 'Backend' },
+    { name: 'Cloud Firestore', category: 'Database' },
+    { name: 'Realtime Database', category: 'Database' },
+    { name: 'GitHub', category: 'Version Control' },
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="inline-flex items-center px-4 py-2 bg-purple-50 rounded-full border border-purple-100 mb-6">
+            <span className="text-sm font-medium text-purple-700">My Expertise</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Skills & Technologies
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Here are the technologies and tools I work with to bring your ideas to life
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Skills with Progress Bars */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-8">Technical Skills</h3>
-            {skills.map((skill, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700 font-medium">{skill.name}</span>
-                  <span className="text-gray-500 text-sm">{skill.level}%</span>
+            <div className="space-y-6">
+              {skills.map((skill, index) => (
+                <div key={index} className="group">
+                  <div className="flex justify-between items-center mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{skill.icon}</span>
+                      <span className="text-gray-800 font-medium">{skill.name}</span>
+                    </div>
+                    <span className="text-gray-500 text-sm font-medium">{skill.level}%</span>
+                  </div>
+                  <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div 
+                      className={`h-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out rounded-full`}
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className={`h-2 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Tools & Technologies */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-8">Tools & Technologies</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               {tools.map((tool, index) => (
                 <div 
                   key={index}
-                  className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow hover:border-blue-200 group"
+                  className="group p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-gray-200"
                 >
-                  <span className="text-gray-700 group-hover:text-blue-600 transition-colors font-medium">
-                    {tool}
-                  </span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-800 group-hover:text-blue-600 transition-colors font-medium text-lg">
+                      {tool.name}
+                    </span>
+                    <span className="text-xs px-3 py-1 bg-blue-100 text-blue-600 rounded-full font-medium">
+                      {tool.category}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
