@@ -56,13 +56,13 @@ const AboutSection = () => {
           <div className="grid grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 group-hover:scale-110 transition-all duration-300">
-                <span className="text-2xl font-bold text-blue-600 group-hover:scale-110 transition-transform duration-300">15+</span>
+                <span className="text-2xl font-bold text-blue-600 group-hover:scale-110 transition-transform duration-300">5+</span>
               </div>
               <div className="text-gray-600 font-medium group-hover:text-gray-800 transition-colors duration-300">Projects Completed</div>
             </div>
             <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group" style={{ animationDelay: '0.1s' }}>
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 group-hover:scale-110 transition-all duration-300">
-                <span className="text-2xl font-bold text-green-600 group-hover:scale-110 transition-transform duration-300">2+</span>
+                <span className="text-2xl font-bold text-green-600 group-hover:scale-110 transition-transform duration-300">1+</span>
               </div>
               <div className="text-gray-600 font-medium group-hover:text-gray-800 transition-colors duration-300">Years Experience</div>
             </div>

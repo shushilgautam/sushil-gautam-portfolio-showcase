@@ -3,12 +3,10 @@ const SkillsSection = () => {
   const skills = [
     { name: 'Flutter (Dart)', level: 95, color: 'from-blue-500 to-blue-600', icon: '📱' },
     { name: 'Native Android (Java, Kotlin)', level: 85, color: 'from-green-500 to-green-600', icon: '🤖' },
-    { name: 'Python', level: 80, color: 'from-yellow-500 to-yellow-600', icon: '🐍' },
     { name: 'Django', level: 75, color: 'from-emerald-500 to-emerald-600', icon: '🌐' },
     { name: 'MySQL', level: 80, color: 'from-blue-600 to-indigo-600', icon: '🗄️' },
     { name: 'Firebase', level: 90, color: 'from-orange-500 to-red-500', icon: '🔥' },
     { name: 'REST API Integration', level: 85, color: 'from-purple-500 to-purple-600', icon: '🔗' },
-    { name: 'Git & GitHub', level: 85, color: 'from-gray-600 to-gray-700', icon: '📂' },
   ];
 
   const tools = [
@@ -17,8 +15,6 @@ const SkillsSection = () => {
     { name: 'PyCharm', category: 'IDE' },
     { name: 'Postman', category: 'API Testing' },
     { name: 'Firebase Console', category: 'Backend' },
-    { name: 'Cloud Firestore', category: 'Database' },
-    { name: 'Realtime Database', category: 'Database' },
     { name: 'GitHub', category: 'Version Control' },
   ];
 
