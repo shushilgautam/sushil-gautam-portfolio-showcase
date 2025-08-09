@@ -72,7 +72,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Kathmandu, Nepal',
+      value: 'Butwal, Nepal',
       href: 'https://maps.google.com/?q=Butwal,Nepal',
       color: 'bg-purple-100 text-purple-600'
     },
