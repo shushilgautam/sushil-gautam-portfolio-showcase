@@ -1,28 +1,58 @@
-
-import { useState } from 'react';
-import { Mail, Phone, Github, Linkedin, Send, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Phone, Github, Linkedin, Send, MapPin, Calendar, Clock } from 'lucide-react';
 
 const ContactSection = () => {
+  // State management remains the same
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [currentHour, setCurrentHour] = useState(0);
+
+  useEffect(() => {
+    // Time and availability logic remains the same
+    const now = new Date();
+    setCurrentHour(now.getHours());
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      setCurrentHour(now.getHours());
+    }, 60000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // Form handling functions remain the same
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+      
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    }, 1500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
+
+  // Determine availability status
+  const isAvailable = currentHour >= 9 && currentHour < 18;
+  const availabilityStatus = isAvailable ? 
+    { text: 'Available now', color: 'bg-green-100 text-green-700' } : 
+    { text: 'Available Mon-Fri, 9AM-6PM', color: 'bg-amber-100 text-amber-700' };
 
   const contactInfo = [
     {
@@ -42,9 +72,15 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Butwal, Nepal',
-      href: '#',
+      value: 'Kathmandu, Nepal',
+      href: 'https://maps.google.com/?q=Butwal,Nepal',
       color: 'bg-purple-100 text-purple-600'
+    },
+    {
+      icon: Calendar,
+      label: 'Availability',
+      value: availabilityStatus.text,
+      color: availabilityStatus.color
     }
   ];
 
@@ -53,95 +89,99 @@ const ContactSection = () => {
       icon: Github,
       label: 'GitHub',
       href: 'https://github.com/shushilgautam',
-      color: 'hover:bg-gray-50 hover:text-gray-900'
+      color: 'bg-gray-900 hover:bg-gray-800'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/shushilgautam/',
-      color: 'hover:bg-blue-50 hover:text-blue-600'
+      color: 'bg-blue-700 hover:bg-blue-800'
     }
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center px-4 py-2 bg-orange-50 rounded-full border border-orange-100 mb-6 hover:bg-orange-100 transition-colors duration-300">
+    <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-50 to-amber-50 rounded-full border border-orange-100 mb-4 group hover:shadow-sm transition-all duration-300">
             <span className="text-sm font-medium text-orange-700">Get In Touch</span>
+            <span className="h-1 w-1 rounded-full bg-orange-400"></span>
+            <span className="text-xs text-orange-500 group-hover:translate-x-0.5 transition-transform">Let's talk</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 hover:text-orange-600 transition-colors duration-500">
-            Let's Work Together
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Let's Create Something <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Amazing</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed hover:text-gray-800 transition-colors duration-300">
-            Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Have a project in mind? I'd love to hear about it. Reach out and I'll respond within 24 hours.
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-5 gap-16">
-          {/* Contact Information */}
-          <div className="lg:col-span-2 space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">Contact Information</h3>
-              <p className="text-gray-600 leading-relaxed text-lg hover:text-gray-800 transition-colors duration-300">
-                I'm always excited to work on new projects and collaborate with amazing people. 
-                Whether you have a question, want to start a project, or just want to say hello, 
-                feel free to reach out!
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {contactInfo.map((contact, index) => {
-                const IconComponent = contact.icon;
-                return (
+      
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Left Column - Contact Info */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6 pb-3 border-b border-gray-100">Contact Information</h3>
+              
+              <div className="space-y-5">
+                {contactInfo.map(({ icon: Icon, href, color, label, value }, index) => (
                   <a
                     key={index}
-                    href={contact.href}
-                    className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-md"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    href={href}
+                    target={href?.startsWith('http') ? '_blank' : '_self'}
+                    rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex items-start gap-4 p-3 rounded-xl hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <div className={`p-3 rounded-lg ${contact.color} group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent size={20} />
+                    <div
+                      className={`p-3 rounded-lg ${color} group-hover:scale-110 transition-transform flex items-center justify-center`}
+                    >
+                      <Icon size={20} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                        {contact.label}
+                      <p className="text-sm font-medium text-gray-500">{label}</p>
+                      <p className="font-medium text-gray-900 group-hover:text-orange-600 transition-colors">
+                        {value}
                       </p>
-                      <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{contact.value}</p>
                     </div>
                   </a>
-                );
-              })}
-            </div>
+                ))}
+              </div>
 
-            <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-gray-900">Follow Me</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a 
+              <div className="mt-8 pt-5 border-t border-gray-100">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Connect With Me</h4>
+                <div className="flex gap-3">
+                  {socialLinks.map(({ icon: Icon, href, color, label }, index) => (
+                    <a
                       key={index}
-                      href={social.href} 
-                      target="_blank" 
+                      href={href}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-4 bg-gray-50 rounded-xl transition-all duration-300 border border-gray-200 ${social.color} transform hover:-translate-y-1 hover:shadow-lg hover:scale-105`}
+                      aria-label={label}
+                      className={`p-4 rounded-xl transition-all duration-300 ${color} text-white flex items-center justify-center transform hover:-translate-y-1 hover:shadow-md`}
                     >
-                      <IconComponent size={24} />
+                      <Icon size={20} />
                     </a>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
             </div>
+            
+            
           </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-3 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="bg-gray-50 rounded-3xl p-8 lg:p-10 hover:shadow-lg transition-shadow duration-500">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="group">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+          
+          {/* Right Column - Contact Form (now wider) */}
+          <div className="lg:col-span-3">
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm h-full hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center gap-3 mb-6 pb-3 border-b border-gray-100">
+                <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <Send size={20} />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Send a Message</h3>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Your Name
                     </label>
                     <input
@@ -151,13 +191,13 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg hover:border-gray-300 hover:shadow-md"
-                      placeholder="Enter your name"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300"
+                      placeholder="John Doe"
                     />
                   </div>
-
-                  <div className="group">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address
                     </label>
                     <input
@@ -167,15 +207,15 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg hover:border-gray-300 hover:shadow-md"
-                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300"
+                      placeholder="john@example.com"
                     />
                   </div>
                 </div>
-
-                <div className="group">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                    Message
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Project Details
                   </label>
                   <textarea
                     id="message"
@@ -183,21 +223,64 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-lg hover:border-gray-300 hover:shadow-md"
-                    placeholder="Tell me about your project..."
+                    rows={5}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 resize-none text-base hover:border-gray-300"
+                    placeholder="Tell me about your project goals, timeline, and budget..."
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg group"
-                >
-                  <Send size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-                  <span>Send Message</span>
-                </button>
+                
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl transition-all duration-300 font-medium shadow-sm ${
+                      isSubmitting 
+                        ? 'bg-gray-300 cursor-not-allowed' 
+                        : 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white hover:shadow-md transform hover:-translate-y-0.5'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </button>
+                  
+                  {submitSuccess && (
+                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-center animate-fade-in">
+                      🎉 Thanks for your message! I'll get back to you soon.
+                    </div>
+                  )}
+                </div>
               </form>
+              
+              <div className="mt-4 pt-2 border-t border-gray-100">
+                <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl">
+                  <div className="flex-shrink-0">
+                    <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                      <Phone size={18} />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Prefer a call?</p>
+                    <p className="text-sm text-gray-600">Schedule a 15-min intro call to discuss your project</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
+            <span className="text-sm text-gray-600">Looking forward to hearing from you</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse"></span>
           </div>
         </div>
       </div>

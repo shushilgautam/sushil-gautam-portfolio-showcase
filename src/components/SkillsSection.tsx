@@ -1,111 +1,156 @@
-import { FaMicrosoft, FaReact, FaAndroid, FaPython, FaDatabase, FaFire, FaLink } from "react-icons/fa";
-import {
-  SiMysql,
-  SiDotnet,
-  SiFlutter,
-  SiDjango,
-  SiFirebase,
-  SiKotlin // This should work if you have the latest react-icons
-} from "react-icons/si";
+import { FaMicrosoft, FaAndroid, FaPython, FaDatabase, FaLink } from "react-icons/fa";
+import { SiMysql, SiDotnet, SiFlutter, SiDjango, SiFirebase, SiKotlin } from "react-icons/si";
 import { DiJava } from "react-icons/di"; 
-import { FaCode } from "react-icons/fa"; 
-import { TbApi, TbPuzzle, TbBinaryTree, TbDatabase } from "react-icons/tb";
-import { MdWeb, MdStorage } from "react-icons/md";
-import { GiDatabase } from "react-icons/gi";
-import { RiCodeSSlashLine } from "react-icons/ri";
+import { TbApi, TbPuzzle, TbBinaryTree, TbDatabase, TbTools } from "react-icons/tb";
+import { MdWeb } from "react-icons/md";
+import { GiSkills } from "react-icons/gi";
+
 const SkillsSection = () => {
   
   const skills = [
-    { name: '.NET (C#, ASP.NET, EF Core)', level: 90, color: 'from-indigo-500 to-indigo-700', icon: <SiDotnet /> },
-    { name: 'Flutter (Dart)', level: 95, color: 'from-blue-500 to-blue-600', icon: <SiFlutter /> },
-    { name: 'Native Android (Java, Kotlin)', level: 85, color: 'from-green-500 to-green-600', icon: <FaAndroid /> },
+    { name: '.NET', level: 90, color: 'from-indigo-500 to-indigo-700', icon: <SiDotnet />, tags: ['C#', 'ASP.NET', 'EF Core'] },
+    { name: 'Flutter', level: 95, color: 'from-blue-500 to-blue-600', icon: <SiFlutter />, tags: ['Dart'] },
+    { name: 'Android', level: 85, color: 'from-green-500 to-green-600', icon: <FaAndroid />, tags: ['Java', 'Kotlin'] },
     { name: 'Java', level: 80, color: 'from-yellow-600 to-orange-600', icon: <DiJava /> },
     { name: 'Kotlin', level: 80, color: 'from-purple-600 to-purple-800', icon: <SiKotlin /> },
     { name: 'Django', level: 75, color: 'from-emerald-500 to-emerald-600', icon: <SiDjango /> },
     { name: 'MySQL', level: 80, color: 'from-blue-600 to-indigo-600', icon: <SiMysql /> },
     { name: 'Firebase', level: 90, color: 'from-orange-500 to-red-500', icon: <SiFirebase /> },
-    { name: 'REST API Integration', level: 85, color: 'from-purple-500 to-purple-600', icon: <TbApi /> },
+    { name: 'REST API', level: 85, color: 'from-purple-500 to-purple-600', icon: <TbApi /> },
     { name: 'MSSQL', level: 80, color: 'from-blue-800 to-blue-900', icon: <FaDatabase /> },
-    { name: 'Entity Framework', level: 85, color: 'from-indigo-400 to-indigo-600', icon: <TbPuzzle /> },
+    { name: 'EF Core', level: 85, color: 'from-indigo-400 to-indigo-600', icon: <TbPuzzle /> },
     { name: 'LINQ', level: 80, color: 'from-violet-500 to-violet-600', icon: <TbBinaryTree /> },
   ];
 
   const tools = [
-    { name: 'Visual Studio', category: 'IDE' },
-    { name: 'VS Code', category: 'Editor' },
-    { name: 'Android Studio', category: 'IDE' },
-    { name: 'PyCharm', category: 'IDE' },
-    { name: 'Postman', category: 'API Testing' },
-    { name: 'Firebase Console', category: 'Backend' },
-    { name: 'SSMS (SQL Server Management Studio)', category: 'Database' },
-    { name: 'GitHub', category: 'Version Control' },
-    { name: 'Git', category: 'Version Control' },
-    { name: 'Azure DevOps', category: 'CI/CD' }
+    { name: 'Visual Studio', category: 'IDE', icon: <FaMicrosoft /> },
+    { name: 'VS Code', category: 'Editor', icon: <MdWeb /> },
+    { name: 'Android Studio', category: 'IDE', icon: <FaAndroid /> },
+    { name: 'PyCharm', category: 'IDE', icon: <FaPython /> },
+    { name: 'Postman', category: 'API', icon: <TbApi /> },
+    { name: 'Firebase', category: 'Backend', icon: <SiFirebase /> },
+    { name: 'SSMS', category: 'Database', icon: <TbDatabase /> },
+    { name: 'GitHub', category: 'Version', icon: <FaLink /> },
+    { name: 'Git', category: 'Version', icon: <FaLink /> },
+    { name: 'Azure DevOps', category: 'CI/CD', icon: <FaMicrosoft /> }
+  ];
+
+  const additionalSkills = [
+    'UI/UX Design', 'Agile Methodologies', 'Problem Solving', 
+    'Project Management', 'Technical Documentation', 'Performance Optimization',
+    'Clean Architecture', 'Unit Testing', 'CI/CD Pipelines'
   ];
 
   return (
-    <section id="skills" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center px-4 py-2 bg-purple-50 rounded-full border border-purple-100 mb-6 hover:bg-purple-100 transition-colors duration-300">
-            <span className="text-sm font-medium text-purple-700">My Expertise</span>
+    <section id="skills" className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-full border border-purple-100 mb-5">
+            <GiSkills className="text-purple-600 mr-2" />
+            <span className="text-sm font-medium text-purple-700">Technical Expertise</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 hover:text-purple-600 transition-colors duration-500">
-            Skills & Technologies
+          <h2 className="text-4xl font-bold text-gray-900 mb-5">
+            Skills & <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">Technologies</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed hover:text-gray-800 transition-colors duration-300">
-            Here are the technologies and tools I work with to bring your ideas to life
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Technologies and tools I leverage to build exceptional solutions
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Skills with Progress Bars */}
-          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-8">Technical Skills</h3>
-            <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Skills Section - Compact Design */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center">
+                <TbTools className="text-xl text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900">Technical Skills</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {skills.map((skill, index) => (
-                <div key={index} className="group hover:-translate-y-1 transition-transform duration-300">
-                  <div className="flex justify-between items-center mb-3">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{skill.icon}</span>
-                      <span className="text-gray-800 font-medium group-hover:text-blue-600 transition-colors duration-300">{skill.name}</span>
+                <div 
+                  key={index} 
+                  className="group p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-gradient-to-br from-white to-gray-50 shadow-sm">
+                      <span className="text-xl text-gray-700 group-hover:text-purple-600 transition-colors duration-300">{skill.icon}</span>
                     </div>
-                    <span className="text-gray-500 text-sm font-medium group-hover:text-gray-800 transition-colors duration-300">{skill.level}%</span>
+                    <div>
+                      <h4 className="text-gray-800 font-medium">{skill.name}</h4>
+                      {skill.tags && (
+                        <div className="flex gap-1 mt-1">
+                          {skill.tags.map((tag, i) => (
+                            <span key={i} className="text-xs px-2 py-1 bg-gray-100 rounded text-gray-600">{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden group-hover:shadow-md transition-shadow duration-300">
-                    <div 
-                      className={`h-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out rounded-full group-hover:shadow-lg`}
-                      style={{ 
-                        width: `${skill.level}%`,
-                        animationDelay: `${index * 0.1}s`
-                      }}
-                    ></div>
+                  <div className="flex items-center justify-between">
+                    <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                      <div 
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-sm text-gray-500 font-medium ml-2">{skill.level}%</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Tools & Technologies */}
-          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-8">Tools & Technologies</h3>
-            <div className="grid grid-cols-1 gap-4">
-              {tools.map((tool, index) => (
-                <div 
-                  key={index}
-                  className="group p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-200"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-800 group-hover:text-blue-600 transition-colors duration-300 font-medium text-lg">
-                      {tool.name}
-                    </span>
-                    <span className="text-xs px-3 py-1 bg-blue-100 text-blue-600 rounded-full font-medium group-hover:bg-blue-200 group-hover:scale-105 transition-all duration-300">
-                      {tool.category}
-                    </span>
-                  </div>
+          {/* Tools & Additional Skills */}
+          <div>
+            {/* Tools Section */}
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center">
+                  <TbTools className="text-xl text-purple-600" />
                 </div>
-              ))}
+                <h3 className="text-2xl font-semibold text-gray-900">Tools & Technologies</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {tools.map((tool, index) => (
+                  <div 
+                    key={index}
+                    className="group p-3 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow transition-all duration-300"
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-white to-gray-50 shadow-sm mb-2">
+                        <span className="text-xl text-gray-700 group-hover:text-purple-600 transition-colors duration-300">
+                          {tool.icon}
+                        </span>
+                      </div>
+                      <h4 className="text-gray-800 font-medium text-sm">{tool.name}</h4>
+                      <p className="text-xs text-gray-500 mt-1">{tool.category}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Additional Skills Section */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center">
+                  <MdWeb className="text-xl text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900">Additional Skills</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {additionalSkills.map((skill, index) => (
+                  <span 
+                    key={index} 
+                    className="px-3 py-1.5 bg-gray-50 rounded-lg text-gray-700 text-sm font-medium hover:bg-purple-50 hover:text-purple-700 transition-colors duration-300 border border-gray-200"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
