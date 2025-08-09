@@ -20,15 +20,20 @@ const HeroSection = () => {
               </div>
               
               <div className="space-y-6">
-                <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 leading-[0.9] tracking-tight animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  Flutter
-                  <span className="block text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
-                    Developer
+                <h1
+                  className="text-6xl lg:text-7xl font-bold text-gray-900 leading-[0.9] tracking-tight animate-fade-in"
+                  style={{ animationDelay: '0.4s' }}
+                >
+                  .NET &amp; Flutter&nbsp;
+                  <span className="block text-3xl lg:text-5xl text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+                    Full-Stack Developer
                   </span>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed max-w-xl font-light animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                  Hi, I'm <span className="font-medium text-gray-900 hover:text-blue-600 transition-colors duration-300">Sushil Gautam</span> — crafting beautiful, 
-                  high-performance cross-platform mobile applications that deliver exceptional user experiences.
+                 <p
+                  className="text-sm lg:text-xl text-gray-600 leading-relaxed max-w-xl font-light animate-fade-in"
+                  style={{ animationDelay: '0.6s' }}
+                >
+                  Hi, I'm <span className="font-medium text-gray-900 hover:text-blue-600 transition-colors duration-300">Sushil Gautam</span> — I build robust, high-performance cross-platform applications with .NET and Flutter, delivering exceptional user experiences for web and mobile.
                 </p>
               </div>
             </div>

@@ -1,21 +1,46 @@
-
+import { FaMicrosoft, FaReact, FaAndroid, FaPython, FaDatabase, FaFire, FaLink } from "react-icons/fa";
+import {
+  SiMysql,
+  SiDotnet,
+  SiFlutter,
+  SiDjango,
+  SiFirebase,
+  SiKotlin // This should work if you have the latest react-icons
+} from "react-icons/si";
+import { DiJava } from "react-icons/di"; 
+import { FaCode } from "react-icons/fa"; 
+import { TbApi, TbPuzzle, TbBinaryTree, TbDatabase } from "react-icons/tb";
+import { MdWeb, MdStorage } from "react-icons/md";
+import { GiDatabase } from "react-icons/gi";
+import { RiCodeSSlashLine } from "react-icons/ri";
 const SkillsSection = () => {
+  
   const skills = [
-    { name: 'Flutter (Dart)', level: 95, color: 'from-blue-500 to-blue-600', icon: '📱' },
-    { name: 'Native Android (Java, Kotlin)', level: 85, color: 'from-green-500 to-green-600', icon: '🤖' },
-    { name: 'Django', level: 75, color: 'from-emerald-500 to-emerald-600', icon: '🌐' },
-    { name: 'MySQL', level: 80, color: 'from-blue-600 to-indigo-600', icon: '🗄️' },
-    { name: 'Firebase', level: 90, color: 'from-orange-500 to-red-500', icon: '🔥' },
-    { name: 'REST API Integration', level: 85, color: 'from-purple-500 to-purple-600', icon: '🔗' },
+    { name: '.NET (C#, ASP.NET, EF Core)', level: 90, color: 'from-indigo-500 to-indigo-700', icon: <SiDotnet /> },
+    { name: 'Flutter (Dart)', level: 95, color: 'from-blue-500 to-blue-600', icon: <SiFlutter /> },
+    { name: 'Native Android (Java, Kotlin)', level: 85, color: 'from-green-500 to-green-600', icon: <FaAndroid /> },
+    { name: 'Java', level: 80, color: 'from-yellow-600 to-orange-600', icon: <DiJava /> },
+    { name: 'Kotlin', level: 80, color: 'from-purple-600 to-purple-800', icon: <SiKotlin /> },
+    { name: 'Django', level: 75, color: 'from-emerald-500 to-emerald-600', icon: <SiDjango /> },
+    { name: 'MySQL', level: 80, color: 'from-blue-600 to-indigo-600', icon: <SiMysql /> },
+    { name: 'Firebase', level: 90, color: 'from-orange-500 to-red-500', icon: <SiFirebase /> },
+    { name: 'REST API Integration', level: 85, color: 'from-purple-500 to-purple-600', icon: <TbApi /> },
+    { name: 'MSSQL', level: 80, color: 'from-blue-800 to-blue-900', icon: <FaDatabase /> },
+    { name: 'Entity Framework', level: 85, color: 'from-indigo-400 to-indigo-600', icon: <TbPuzzle /> },
+    { name: 'LINQ', level: 80, color: 'from-violet-500 to-violet-600', icon: <TbBinaryTree /> },
   ];
 
   const tools = [
-    { name: 'Android Studio', category: 'IDE' },
+    { name: 'Visual Studio', category: 'IDE' },
     { name: 'VS Code', category: 'Editor' },
+    { name: 'Android Studio', category: 'IDE' },
     { name: 'PyCharm', category: 'IDE' },
     { name: 'Postman', category: 'API Testing' },
     { name: 'Firebase Console', category: 'Backend' },
+    { name: 'SSMS (SQL Server Management Studio)', category: 'Database' },
     { name: 'GitHub', category: 'Version Control' },
+    { name: 'Git', category: 'Version Control' },
+    { name: 'Azure DevOps', category: 'CI/CD' }
   ];
 
   return (

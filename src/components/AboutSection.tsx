@@ -6,23 +6,20 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in">
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors duration-300">
                 <span className="text-sm font-medium text-blue-700">About Me</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight hover:text-blue-600 transition-colors duration-500">
-                Flutter Developer & 
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight hover:text-blue-600 transition-colors duration-500">
+                .NET &amp; Flutter Developer
                 <span className="block text-blue-600">CSIT Student</span>
               </h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p className="hover:text-gray-800 transition-colors duration-300">
-                  I'm a Flutter developer and CSIT student with a deep passion for creating 
-                  beautiful, functional mobile applications that solve real-world problems.
+              <div className="space-y-4 text-md text-gray-600 leading-relaxed">
+               <p className="hover:text-gray-800 transition-colors duration-300">
+                  I’m a CSIT student skilled in both .NET and Flutter. I build reliable web and mobile apps that work smoothly across different platforms.
                 </p>
                 <p className="hover:text-gray-800 transition-colors duration-300">
-                  I specialize in cross-platform development, bringing ideas to life 
-                  with clean code, intuitive interfaces, and seamless user experiences 
-                  across both iOS and Android platforms.
+                  I enjoy solving problems with technology, from mobile apps in Flutter to secure backends in .NET. I’m always learning and love bringing new ideas to life.
                 </p>
               </div>
             </div>
@@ -32,7 +29,7 @@ const AboutSection = () => {
               <div className="space-y-6">
                 <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-blue-600 before:rounded-full hover:before:w-2 before:transition-all before:duration-300 group">
                   <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group-hover:border-blue-200">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    <h4 className="text-md font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                       Bachelor of Science in Computer Science and Information Technology
                     </h4>
                     <p className="text-blue-600 font-medium">New Summit College</p>
@@ -41,7 +38,7 @@ const AboutSection = () => {
                 </div>
                 <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-gray-200 before:rounded-full hover:before:bg-gray-400 hover:before:w-2 before:transition-all before:duration-300 group">
                   <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group-hover:border-gray-300">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+                    <h4 className="text-md font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                       Higher Secondary Education (Science)
                     </h4>
                     <p className="text-gray-600 font-medium">Tilottama College</p>
